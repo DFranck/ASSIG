@@ -13,22 +13,25 @@ const pageProjects = async () => {
   );
 
   return (
-    <div>
+    <div className="my-20">
       <h1>Projets de {session?.user?.name}</h1>
       <p>Liste des projets</p>
       {projets.length > 0 ? (
         <ul>
           {projets.map((project: any) => (
             <li key={project.id}>
-              <Link href={`/projets/${project.id}`}>{project.title}</Link>
+              <Link href={`/projects/${project.id}`}>{project.title}</Link>
             </li>
           ))}
         </ul>
       ) : (
         <Button>
-          <Link href="/projets/create">Create your first project</Link>
+          <Link href="/projects/create">Create your first project</Link>
         </Button>
       )}
+      <Button>
+        <Link href="/projects/create">Create a new project</Link>
+      </Button>
     </div>
   );
 };

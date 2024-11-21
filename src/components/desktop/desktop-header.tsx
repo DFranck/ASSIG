@@ -46,7 +46,7 @@ export const DesktopHeader = () => {
           /> */}
           <nav className="flex gap-2">
             <Link href={'/'}>Accueil</Link>
-            <Link href={'/projets'}>Projets</Link>
+            <Link href={'/projects'}>Projets</Link>
           </nav>
           {!user && (
             <UserAuth setIsOpen={setIsOpen} className="hidden lg:flex" />

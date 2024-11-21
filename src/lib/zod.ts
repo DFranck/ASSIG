@@ -81,3 +81,12 @@ export const newPasswordSchema = z
     message: 'passwordsdonotmatch',
     path: ['confirmPassword'],
   });
+
+export const createProjectSchema = z.object({
+  title: z.string().min(1, 'Title is required'),
+  description: z.string().optional(),
+  location: z.string().min(1, 'Location is required'),
+  latitude: z.number().nonnegative('Invalid latitude'),
+  longitude: z.number().nonnegative('Invalid longitude'),
+  mapZoom: z.number().min(1).max(20).default(14),
+});
