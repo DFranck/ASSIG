@@ -33,21 +33,24 @@ const LocationSelection = () => {
     libraries,
   });
 
-  const fetchAddress = async (lat: number, lng: number) => {
-    if (!isLoaded) return;
+  const fetchAddress = useCallback(
+    async (lat: number, lng: number) => {
+      if (!isLoaded) return;
 
-    const geocoder = new google.maps.Geocoder();
-    const location = { lat, lng };
+      const geocoder = new google.maps.Geocoder();
+      const location = { lat, lng };
 
-    geocoder.geocode({ location }, async (results, status) => {
-      if (status === 'OK' && results && results[0]) {
-        setLocationText(results[0].formatted_address);
-        setValue('location', results[0].formatted_address);
-      } else {
-        console.error('Geocoder failed:', status);
-      }
-    });
-  };
+      geocoder.geocode({ location }, async (results, status) => {
+        if (status === 'OK' && results && results[0]) {
+          setLocationText(results[0].formatted_address);
+          setValue('location', results[0].formatted_address);
+        } else {
+          console.error('Geocoder failed:', status);
+        }
+      });
+    },
+    [isLoaded, setValue],
+  );
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
