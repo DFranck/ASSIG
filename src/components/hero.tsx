@@ -9,7 +9,7 @@ const Hero = () => {
   const locale = useLocale();
   return (
     <>
-      <AuroraBackground className="text-foreground absolute top-0 w-full h-screen">
+      <AuroraBackground className="text-foreground absolute top-0 w-screen h-screen">
         <p></p>
       </AuroraBackground>
       <Section className="max-w-4xl h-screen  text-justify md:text-center gap-20 md:gap-10 px-4">

@@ -6,8 +6,8 @@ import { createProjectSchema } from '@/lib/zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
-import LocationSelection from '../LocationSelection';
 import { InputField } from './InputField';
+import LocationSelection from './LocationSelection';
 import { TextareaField } from './TextareaField';
 
 export const FormContainer = () => {
@@ -67,7 +67,7 @@ export const FormContainer = () => {
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
         id="project-create-form"
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-4 w-full"
       >
         <InputField name="title" label="Title" />
         <TextareaField name="description" label="Description" />

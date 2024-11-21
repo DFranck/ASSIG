@@ -63,7 +63,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       >
         <Provider messages={messages}>
           <Header />
-          <Main className={cn('px-4', { 'pb-10': deviceType !== 'desktop' })}>
+          <Main className={cn('', { 'pb-10': deviceType !== 'desktop' })}>
             {children}
           </Main>
           <Footer />

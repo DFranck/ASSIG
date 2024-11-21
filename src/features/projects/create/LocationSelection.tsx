@@ -122,7 +122,6 @@ const LocationSelection = () => {
       {isLoaded && (
         <div className="map-container h-96 border w-full rounded-lg overflow-hidden">
           <GoogleMapsComponent
-            isLoaded={isLoaded}
             mapCenter={mapCenter}
             handleMapClick={(event) => {
               if (event.latLng) {
