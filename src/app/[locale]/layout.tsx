@@ -1,7 +1,5 @@
 import AskPermissionBtn from '@/components/ask-permission-btn';
-import DesktopHeader from '@/components/desktop/desktop-header';
-import InstallPromptButton from '@/components/mobile/install-prompt-button';
-import MobileHeader from '@/components/mobile/mobile-header';
+import Header from '@/components/Header';
 import Footer from '@/components/shared/footer';
 import Main from '@/components/shared/main';
 import { cn } from '@/lib/utils';
@@ -64,17 +62,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         className={cn(inter.className, 'min-h-screen flex flex-col h-full')}
       >
         <Provider messages={messages}>
-          {deviceType === 'desktop' && <DesktopHeader />}
-          <Main className={cn('', { 'pb-10': deviceType !== 'desktop' })}>
+          <Header />
+          <Main className={cn('px-4', { 'pb-10': deviceType !== 'desktop' })}>
             {children}
           </Main>
-          {deviceType === 'desktop' && <Footer />}
-          {deviceType !== 'desktop' && (
-            <>
-              <MobileHeader />
-              <InstallPromptButton />{' '}
-            </>
-          )}
+          <Footer />
           <AskPermissionBtn />
         </Provider>
       </body>

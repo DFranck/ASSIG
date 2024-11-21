@@ -53,7 +53,7 @@ const UserMen = () => {
 
   if (user) {
     return (
-      <div className="relative" onBlur={handleBlur}>
+      <div className="relative hidden md:block" onBlur={handleBlur}>
         <Avatar
           className="cursor-pointer relative w-9 h-9"
           onClick={handleOpen}

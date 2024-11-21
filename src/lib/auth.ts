@@ -46,7 +46,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           // Compare password with stored hash
           if (user && (await compare(parsedData.password, user.password))) {
             return {
-              id: user.id,
+              // id: user._id.toString(),
               username: user.username,
               email: user.email,
               role: user.role,
@@ -113,19 +113,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           updatedAt: new Date(),
         };
 
-        await db.collection('users').insertOne(newUser);
+        const result = await db.collection('users').insertOne(newUser);
         console.log('✅ New user created via OAuth:', newUser);
+        user.id = result.insertedId.toString();
+        user.username = newUser.username;
+        return true;
       } else {
         console.log('🔄 User already exists in database:', existingUser);
+        user.id = existingUser._id.toString();
+        user.username = existingUser.username;
+        return true;
       }
-
-      return true;
     },
     async jwt({ token, user, trigger, session }) {
       if (trigger === 'update' && session) {
         return { ...token, ...session?.user };
       }
       if (user) {
+        // token.id = user.id;
         token.username = user.username || '';
         token.email = user.email || '';
         token.role = user.role || 'user';
@@ -136,6 +141,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }: { session: Session; token: any }) {
       session.user = {
         id: token.sub,
+        // _id: token.id,
         username: token.username,
         email: token.email,
         role: token.role,

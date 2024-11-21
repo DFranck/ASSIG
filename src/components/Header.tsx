@@ -1,18 +1,18 @@
 'use client';
 import Burger from '@/components/burger';
-import Nav from '@/components/nav';
+import UserAuth from '@/features/auth/components/user-auth';
 import LocaleSwitcher from '@/features/internationalization/locale-switcher';
 import { ThemeSwitcher } from '@/features/theme/theme-switcher';
 import useOnScroll from '@/hooks/useOnScroll';
 import { cn } from '@/lib/utils';
+import { Home, LogOut, Paperclip, Settings, User } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import UserAuth from '../../features/auth/components/user-auth';
-import EzStartSvg from '../svgs/ezstart-svg';
-import UserMenu from '../user-menu';
+import EzStartSvg from './svgs/ezstart-svg';
+import UserMenu from './user-menu';
 
 export const DesktopHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +44,7 @@ export const DesktopHeader = () => {
             root={[0]}
             dir={'row'}
           /> */}
-          <nav className="flex gap-2">
+          <nav className="hidden md:flex gap-2">
             <Link href={'/'}>Accueil</Link>
             <Link href={'/projects'}>Projets</Link>
           </nav>
@@ -62,7 +62,7 @@ export const DesktopHeader = () => {
             <Burger
               setIsOpen={setIsOpen}
               isOpen={isOpen}
-              className="flex lg:hidden"
+              className="flex md:hidden"
             />
             <UserMenu />
           </div>
@@ -73,30 +73,33 @@ export const DesktopHeader = () => {
             { 'max-h-0': !isOpen, 'max-h-screen mt-4': isOpen },
           )}
         >
-          <Nav
-            navClass="bg-accent text-accent-foreground p-2 border-b border-primary"
-            liClass="text-left p-2"
-            t={'layout.header'}
-            render={'nav-links'}
-            root={[0]}
-            dir={'col'}
-            active
-            variant={'primary'}
-            setIsOpen={setIsOpen}
-          />
-          {pathname.includes(`/${locale}/docs`) && (
-            <Nav
-              t="pages.docs"
-              navClass="bg-accent text-accent-foreground p-2"
-              liClass="text-right p-2"
-              render="nav-links"
-              path="docs"
-              dir={'col'}
-              active
-              variant={'primary'}
-              setIsOpen={setIsOpen}
-            />
+          {isOpen && (
+            <nav
+              className="flex flex-col gap-2 bg-accent text-accent-foreground p-2 border-b border-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              <ul>
+                <li className="flex items-center gap-2">
+                  <Home className="w-4 h-4" />
+                  <Link href={'/'}>Accueil</Link>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Paperclip className="w-4 h-4" />{' '}
+                  <Link href={'/projects'}>Projets</Link>
+                </li>
+                <li className="flex items-center gap-2">
+                  <User className="w-4 h-4" /> Profile
+                </li>
+                <li className="flex items-center gap-2">
+                  <Settings className="w-4 h-4" /> Settings
+                </li>
+                <li className="flex items-center gap-2">
+                  <LogOut className="w-4 h-4" /> log out
+                </li>
+              </ul>
+            </nav>
           )}
+
           {!user && <UserAuth />}
         </div>
       </div>
