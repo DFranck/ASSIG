@@ -6,10 +6,14 @@ import { NextResponse } from 'next/server';
 export async function GET(req: Request) {
   console.log('[API] Received request for user projects');
 
-  const token = await getToken({
+  const tokenParams: any = {
     req,
-    secret: process.env.AUTH_SECRET,
-  });
+    secret: process.env.AUTH_SECRET as string,
+    secureCookie: process.env.NODE_ENV === 'production',
+    // salt,
+  };
+
+  const token = await getToken(tokenParams);
 
   if (!token) {
     console.error('[API] User not authenticated');

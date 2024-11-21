@@ -1,4 +1,4 @@
-import { db } from '@/lib/db';
+import { connectToDatabase } from '@/lib/db';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
@@ -9,26 +9,35 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const body = await req.json();
-  const { email, role } = body;
-
-  if (!email || !role) {
-    return NextResponse.json(
-      { message: 'Email and role are required' },
-      { status: 400 },
-    );
-  }
-
   try {
-    const user = await db.user.update({
-      where: { email },
-      data: { role },
-    });
+    // Récupération du body de la requête
+    const body = await req.json();
+    const { email, role } = body;
+
+    // Validation des paramètres
+    if (!email || !role) {
+      return NextResponse.json(
+        { message: 'Email and role are required' },
+        { status: 400 },
+      );
+    }
+
+    // Connexion à la base de données
+    const { db } = await connectToDatabase();
+
+    // Mise à jour de l'utilisateur par email
+    const result = await db.collection('users').updateOne(
+      { email }, // Filtre
+      { $set: { role } }, // Mise à jour
+    );
+
+    // Vérification si un utilisateur a été mis à jour
+    if (result.matchedCount === 0) {
+      return NextResponse.json({ message: 'User not found' }, { status: 404 });
+    }
 
     return NextResponse.json(
-      {
-        message: `Updated user role: ${user.email} is now an ${user.role}`,
-      },
+      { message: `User role updated successfully: ${email} is now ${role}` },
       { status: 200 },
     );
   } catch (error) {
@@ -37,12 +46,5 @@ export async function POST(req: NextRequest) {
       { message: 'Error updating user role' },
       { status: 500 },
     );
-  } finally {
-    await db.$disconnect();
   }
 }
-
-// Invoke-WebRequest -Uri "http://localhost:3000/api/auth/update-roles" `
-// -Method POST `
-// -ContentType "application/json" `
-// -Body '{"email": "test@test.fr", "role": "admin"}'
