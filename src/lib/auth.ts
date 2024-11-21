@@ -66,7 +66,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   secret: process.env.AUTH_SECRET,
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user, account }) {
       const { db } = await connectToDatabase();
 
       // Vérifiez si l'utilisateur existe déjà

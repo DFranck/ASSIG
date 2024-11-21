@@ -7,19 +7,14 @@ import useOnScroll from '@/hooks/useOnScroll';
 import { cn } from '@/lib/utils';
 import { Home, LogOut, Paperclip, Settings, User } from 'lucide-react';
 import { useSession } from 'next-auth/react';
-import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import EzStartSvg from './svgs/ezstart-svg';
 import UserMenu from './user-menu';
 
 export const DesktopHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
-  const locale = useLocale();
   const scrollY = useOnScroll();
-  const t = useTranslations('layout.header');
   const { data: session } = useSession();
   const user = session?.user;
   return (

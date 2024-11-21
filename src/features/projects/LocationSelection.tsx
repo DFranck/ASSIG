@@ -63,7 +63,7 @@ const LocationSelection = () => {
       },
       (error) => console.error('Geolocation error:', error),
     );
-  }, [isLoaded, setValue]);
+  }, [isLoaded, setValue, fetchAddress]);
 
   const onPlacesChanged = useCallback(() => {
     if (searchBoxRef.current) {
@@ -81,32 +81,6 @@ const LocationSelection = () => {
       }
     }
   }, [setValue]);
-
-  const handleMapClick = (event: google.maps.MapMouseEvent) => {
-    if (event.latLng) {
-      const lat = event.latLng.lat();
-      const lng = event.latLng.lng();
-
-      // Utilisation de Google Geocoder pour récupérer l'adresse
-      const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ location: { lat, lng } }, (results, status) => {
-        if (status === 'OK' && results && results[0]) {
-          const formattedAddress = results[0].formatted_address;
-
-          // Mettre à jour les champs dans le formulaire
-          setValue('latitude', lat);
-          setValue('longitude', lng);
-          setValue('location', formattedAddress);
-
-          // Mettre à jour l'état local
-          setMapCenter({ lat, lng });
-          setLocationText(formattedAddress);
-        } else {
-          console.error('Geocoder failed:', status);
-        }
-      });
-    }
-  };
 
   return (
     <div className="flex flex-col gap-4">

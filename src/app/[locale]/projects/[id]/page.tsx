@@ -45,7 +45,7 @@ const PageProjectsProject = async ({ params }: Props) => {
       <div>
         <h1>{project.title || "Project's title"}</h1>
         <p>{project.description || "Project's description"}</p>
-        <p>Formulaire d'ajout de pin ou import CSV</p>
+        <p>Formulaire dajout de pin ou import CSV</p>
         <p>SIG pour rendre les pins interactifs</p>
         <p>Édition des pins cliquées</p>
       </div>
