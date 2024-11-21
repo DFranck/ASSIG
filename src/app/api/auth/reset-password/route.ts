@@ -1,4 +1,4 @@
-import { db } from '@/lib/db';
+import { connectToDatabase } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -12,8 +12,8 @@ export async function POST(req: NextRequest) {
       { status: 400 },
     );
   }
-
-  const user = await db.user.findUnique({ where: { resetCode: resetCode } });
+  const { db } = await connectToDatabase();
+  const user = await db.collection('users').findOne({ resetCode: resetCode });
   if (
     !user ||
     !user.resetCodeExpiresAt ||
@@ -26,14 +26,16 @@ export async function POST(req: NextRequest) {
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
-  await db.user.update({
-    where: { resetCode: resetCode },
-    data: {
-      password: hashedPassword,
-      resetCode: null,
-      resetCodeExpiresAt: null,
+  await db.collection('users').updateOne(
+    { resetCode: resetCode },
+    {
+      $set: {
+        password: hashedPassword,
+        resetCode: null,
+        resetCodeExpiresAt: null,
+      },
     },
-  });
+  );
 
   return NextResponse.json({ message: 'Password updated' }, { status: 200 });
 }

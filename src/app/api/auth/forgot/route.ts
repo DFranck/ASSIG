@@ -1,4 +1,4 @@
-import { db } from '@/lib/db';
+import { connectToDatabase } from '@/lib/db';
 import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import mailjet from 'node-mailjet';
@@ -16,18 +16,31 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'emailRequired' }, { status: 400 });
   }
 
-  const resetCode = crypto.randomBytes(3).toString('hex');
-  const resetCodeExpiresAt = new Date(Date.now() + 3600000); // 1 hour from now
-
   try {
-    const user = await db.user.findUnique({ where: { email: email } });
+    const { db } = await connectToDatabase();
+    const user = await db.collection('users').findOne({ email });
     if (!user) {
       return NextResponse.json({ message: 'User not found' }, { status: 404 });
+    } // Si l'utilisateur est lié à un OAuth provider
+    if (user.oauthProvider) {
+      return NextResponse.json(
+        {
+          message: `This email is associated with ${user.oauthProvider}. Please use ${user.oauthProvider} to log in.`,
+        },
+        { status: 400 },
+      );
     }
-    await db.user.update({
-      where: { email: email },
-      data: { resetCode: resetCode, resetCodeExpiresAt: resetCodeExpiresAt },
-    });
+    const resetCode = crypto.randomBytes(3).toString('hex');
+    const resetCodeExpiresAt = new Date(Date.now() + 3600000); // 1 hour from now
+    await db.collection('users').updateOne(
+      { email },
+      {
+        $set: {
+          resetCode,
+          resetCodeExpiresAt,
+        },
+      },
+    );
     await mailjetClient.post('send', { version: 'v3.1' }).request({
       Messages: [
         {
@@ -38,7 +51,7 @@ export async function POST(req: NextRequest) {
           To: [
             {
               Email: email,
-              Name: 'User',
+              Name: user.username || 'User',
             },
           ],
           Subject: 'Password Reset Code',

@@ -1,4 +1,4 @@
-import { db } from '@/lib/db';
+import { connectToDatabase } from '@/lib/db';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
@@ -11,8 +11,8 @@ export async function POST(req: NextRequest) {
       { status: 400 },
     );
   }
-
-  const user = await db.user.findUnique({ where: { resetCode } });
+  const { db } = await connectToDatabase();
+  const user = await db.collection('users').findOne({ resetCode });
   if (
     !user ||
     !user.resetCodeExpiresAt ||

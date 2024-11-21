@@ -14,6 +14,8 @@ export interface User {
   oauthProvider?: string;
   profileImage: string;
   projects: ObjectId[];
+  resetCode: string | null;
+  resetCodeExpiresAt: Date | null;
   // timestamps
   createdAt: Date;
   updatedAt: Date;
