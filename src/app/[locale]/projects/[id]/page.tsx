@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 
 interface Props {
   params: { id: string };
-  project: { title: string; description: string };
 }
 
 async function fetchProjectDetails(id: string) {
