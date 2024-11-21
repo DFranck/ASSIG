@@ -1,0 +1,591 @@
+{
+  "app": {
+    "meta-title": "EzStart - Le Boilerplate Ultime pour le Développement Web Moderne",
+    "meta-description": "Lancez vos projets de développement web avec {meta-title}, un boilerplate complet et flexible. Construit avec des technologies modernes et les meilleures pratiques, {meta-title} fournit une base robuste pour créer des applications web performantes et évolutives. Parfait pour les développeurs cherchant à optimiser leur flux de travail et à améliorer leur productivité.",
+    "locale": {
+      "language": { "en": "Anglais", "fr": "Français" }
+    },
+    "theme": {
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "common": {
+      "sorry": "Désolé",
+      "not-found": "Page non trouvé",
+      "go-back": "Retourner à la page d'accueil"
+    },
+    "errors": {
+      "nameRequired": "Nom d'utilisateur requis avec un minimum de 3 caractères.",
+      "emailRequired": "L'email est requis.",
+      "invalidEmail": "Adresse email invalide.",
+      "passwordRequired": "Le mot de passe est requis.",
+      "passwordMin": "Le mot de passe doit comporter plus de 8 caractères.",
+      "passwordMax": "Le mot de passe doit comporter moins de 32 caractères.",
+      "userExists": "L'utilisateur existe déjà.",
+      "configuration": "Email ou mot de passe incorrect.",
+      "notfound": "Utilisateur non trouvé.",
+      "passwordsdonotmatch": "Les mots de passe ne correspondent pas.",
+      "codeRequired": "Le code semble incorrect."
+    },
+    "auth": {
+      "sign-in": "Se connecter",
+      "sign-up": "S'inscrire",
+      "sign-out": "Se déconnecter",
+      "forms": {
+        "or": "or",
+        "username-label": "Username",
+        "username-placeholder": "Username",
+        "email-label": "Email",
+        "email-placeholder": "Email",
+        "password-label": "Mot de passe",
+        "password-placeholder": "Mot de passe",
+        "confirm-password-label": "Confirmez le mot de passe",
+        "confirm-password-placeholder": "Confirmez le mot de passe",
+        "sign-in-form": {
+          "title": "Connexion à EzStart",
+          "subtitle": "Bienvenue! Veuillez vous connecter pour continuer.",
+          "forgot-password": "Mot de passe oublie?",
+          "no-account": "Vous n'avez pas de compte?"
+        },
+        "sign-up-form": {
+          "title": "Inscription à EzStart",
+          "subtitle": "Bienvenue! Veuillez vous inscrire pour commencer.",
+          "already-have-account": "Vous avez deja un compte?"
+        },
+        "forgot-form": {
+          "title": "Mot de passe oublie?",
+          "subtitle": "Entrez votre adresse email et nous vous enverrons un code pour reinitialiser votre mot de passe.",
+          "back": "Retourner à la connexion",
+          "send": "Recevoir mon code",
+          "no-account": "Vous n'avez pas de compte?"
+        },
+        "verify-code-form": {
+          "title": "Vérification du code",
+          "subtitle": "Entrez le code que nous avons envoyé à votre adresse email.",
+          "resend": "Renvoyer le code",
+          "verify-code-label": "Code",
+          "verify-code-placeholder": "Code",
+          "verify": "Vérifier",
+          "back": "Retourner à la connexion"
+        },
+        "reset-password-form": {
+          "title": "Réinitialiser votre mot de passe",
+          "subtitle": "Vous pouvez maintenant réinitialiser votre mot de passe.",
+          "reset": "Réinitialiser"
+        }
+      }
+    },
+    "pwa": {
+      "popup-title": "Installer l'application",
+      "popup-description": "L'application EzStart est disponible pour tous les utilisateurs. Voulez-vous l'installer maintenant?",
+      "popup-accept": "Oui",
+      "popup-decline": "Non"
+    }
+  },
+  "layout": {
+    "header": {
+      "app-title": "EzStart",
+      "nav-links": ["Accueil", "Docs"]
+    },
+    "footer": {
+      "copyright": "Copyright © 2024. Tous droits réservés.",
+      "owner": "Designé & Codé par "
+    },
+    "user-menu": {
+      "settings": "Paramètres"
+    }
+  },
+  "pages": {
+    "nav-links": {
+      "home": "Home",
+      "docs": "Docs"
+    },
+    "home": {
+      "page-title": "Accueil",
+      "page-description": "Bienvenue sur EzStart !",
+      "nav-links": ["features", "get-started"],
+      "sections": {
+        "hero": {
+          "title": "EzStart",
+          "description": "EZ Start est une boilerplate qui fournit un point de départ complet et flexible pour vos projets de développement web. Construit avec des technologies modernes et les meilleures pratiques, il vous aide à démarrer votre processus de développement avec une base solide.",
+          "cta": "Get Started",
+          "github": "Étoile sur GitHub"
+        },
+        "features": {
+          "title": "Fonctionnalités",
+          "subtitle": "Créez votre prochaine application avec ",
+          "description": "Ces fonctionnalités sont déja disponibles et intégrées pour tous les utilisateurs de cette boilerplate. Si seulement certaines features vous interessent, vous pouvez les trouver dans la documentation de l'application, la documentation est en cours de rédaction s'il vous manque des informations n'hésitez pas à me contacter.",
+          "content": [
+            {
+              "title": "Stack de Pointe",
+              "description": "Exploitez la puissance de Next.js 14 pour créer vos applications. Ez-start utilise TypeScript, Tailwind CSS et Prisma ORM et bien plus pour offrir un environnement de développement moderne et efficace. Restez à la pointe avec les dernières technologies web, les meilleures pratiques et un SEO optimisé.",
+              "link": "/",
+              "image": "StackSvg"
+            },
+            {
+              "title": "Authentification Sécurisée",
+              "description": "Implémentez une authentification sécurisée dans votre application en utilisant Auth.js, la dernière version de Next-Auth.js. Cela permet une intégration avec divers fournisseurs tels que Google et GitHub, garantissant une authentification utilisateur flexible et sécurisée ainsi qu'une gestion des comptes.",
+              "link": "authentication",
+              "image": "SecureSvg"
+            },
+            {
+              "title": "Portée Globale avec i18n",
+              "description": "Étendez la portée de votre application au niveau mondial avec Next-Intl pour une localisation fluide. Cette configuration vous permet de gérer les traductions facilement et de répondre à un public diversifié en supprimant les barrières linguistiques.",
+              "link": "internationalization",
+              "image": "GlobalSvg"
+            },
+            {
+              "title": "Gestion de la Base de Données",
+              "description": "Integrez Prisma pour une gestion simplifiée et efficace de la base de données. Générez des migrations automatiques, accédez à des données typées et assurez la compatibilité avec PostgreSQL, SQLite et MySQL.",
+              "link": "db-management",
+              "image": "DbSvg"
+            },
+            {
+              "title": "Composants Personnalisés",
+              "description": "Galvanisé par les composants de shadcn/ui pour créer des interfaces utilisateur dynamiques et accessibles. Cette boilerplate inclut des composants personnalisés conçus afin d'integrer pleinement la traduction avec Next-Intl pour une internationalisation sans effort.",
+              "link": "components",
+              "image": "ComponentSvg"
+            },
+            {
+              "title": "Generateur de QR code",
+              "description": "Crée ton qr code gratuitement et facilement. Cette boilerplate inclut des composants personnalisés conçus afin d'integrer pleinement la traduction avec Next-Intl pour une internationalisation sans effort.",
+              "link": "qr-code-generator",
+              "image": "ComponentSvg"
+            },
+            {
+              "title": "Tri d'images",
+              "description": "Triez vos images automatiquement pour détecter les doublons, les images floues ou celles de petite taille.",
+              "link": "qr-code-generator",
+              "image": "ComponentSvg"
+            },
+            {
+              "title": "Paiement avec Stripe",
+              "description": "Intégration du paiement sécurisé avec Stripe pour une gestion des transactions fluide et fiable. Cette prochaine implémentation permettra aux utilisateurs de réaliser des paiements en toute sécurité, avec une prise en charge complète des principales cartes de crédit et des méthodes de paiement populaires.",
+              "link": "payment",
+              "image": "PaymentSvg"
+            }
+          ]
+        },
+        "get-started": {
+          "title": "Get started avec EzStart",
+          "cta": "Get Started",
+          "github": "Étoile sur GitHub",
+          "content": [
+            "Pour utiliser EzStart, cliquez sur le bouton 'Get Started' ci-dessus et suivez les instructions de configuration. Personnalisez les fichiers de configuration pour répondre aux besoins de votre projet et commencez à créer votre application en toute simplicité.",
+            "Ce boilerplate est conçu pour être flexible et extensible, vous permettant d'ajouter des fonctionnalités et de modifier les existantes pour répondre à vos exigences spécifiques."
+          ]
+        }
+      }
+    },
+    "docs": {
+      "title": "Documentation d'EzStart",
+      "description": "Se veux être un guide complet avec référence pour utiliser EzStart. Apprenez à exploiter les fonctionnalités et les composants d'EzStart pour demarrer votre processus de développement.",
+      "sections": {
+        "primary-dependencies": {
+          "title": "Dépendances Principales",
+          "description": "Vous trouverez ci-dessous les principales dépendances utilisées dans cette boilerplate et leur documentation officielle.",
+          "framework": "Framework",
+          "orm": "ORM",
+          "authentication": "Authentification",
+          "styling": "Stylisation",
+          "forms": "Formulaires",
+          "internationalization": "Internationalisation"
+        }
+      },
+      "nav-links": {
+        "get-started": "Get Started",
+        "internationalization": "Internationalisation",
+        "db-management": "Gestion de la Base de Données",
+        "authentication": "Authentification",
+        "qr-code-generator": "Generateur de QR code",
+        "image-sorting": "Tri d'images",
+        "payment": "Paiement",
+        "components": "Composants"
+      },
+      "get-started": {
+        "title": "Get started avec EzStart",
+        "description": "EzStart est une boilerplate conçu pour démarrer rapidement vos projets Next.js avec des fonctionnalités avancées intégrées.",
+        "sections": {
+          "installation": {
+            "title": "Installation",
+            "contribute": "Contribuer à EzStart",
+            "use": "Utiliser EzStart",
+            "step-use": "git clone --depth=1 https://github.com/DFranck/my-ez-start.git mon-nom-de-projet\ncd mon-nom-de-projet\nnpm install",
+            "step-contribute": "git clone https://github.com/DFranck/my-ez-start.git\ncd my-ez-start\nnpm install",
+            "steps": "git clone https://github.com/DFranck/my-ez-start.git\ncd my-ez-start\nnpm install"
+          },
+          "setup-env": {
+            "title": "Configurer l'Environnement",
+            "steps": "DATABASE_URL=`postgresql://username:password@localhost:5432/mydatabase`\nAUTH_URL=http://localhost:3000\nAUTH_SECRET=YOUR_SECRET_KEY\nAUTH_SALT=YOUR_SALT\nGOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID\nGOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET\nGITHUB_CLIENT_ID=YOUR_GITHUB_CLIENT_ID\nGITHUB_CLIENT_SECRET=YOUR_GITHUB_CLIENT_SECRET\nMAILJET_API_SECRET=YOUR_MAILJET_API_SECRET\nMAILJET_API_KEY=YOUR_MAILJET_API_KEY",
+            "helper-cta": "Besoin d'aide pour configurer l'environnement ?",
+            "helper-title": "Quels setups pose probleme?",
+            "variables": [
+              {
+                "name": "DATABASE_URL",
+                "description": "The connection string for your PostgreSQL database. You can find this in your database service dashboard.",
+                "link": "/docs/db-management"
+              },
+              {
+                "name": "AUTH_URL",
+                "description": "The base URL of your authentication service. Typically this is your application's URL.",
+                "link": "/docs/authentication/#AUTH_URL"
+              },
+              {
+                "name": "AUTH_SECRET",
+                "description": "A secret key for encrypting JWT tokens. Generate a random key using crypto or another method.",
+                "link": "/docs/authentication/#AUTH_SECRET"
+              },
+              {
+                "name": "AUTH_SALT",
+                "description": "A salt for hashing passwords. Generate a random salt using crypto or another method.",
+                "link": "/docs/authentication/#AUTH_SALT"
+              },
+              {
+                "name": "GOOGLE_CLIENT_ID",
+                "description": "Your Google OAuth client ID. You can find this in the Google Developer Console.",
+                "link": "/docs/authentication/#GOOGLE_CLIENT"
+              },
+              {
+                "name": "GOOGLE_CLIENT_SECRET",
+                "description": "Your Google OAuth client secret. You can find this in the Google Developer Console.",
+                "link": "/docs/authentication/#GOOGLE_CLIENT"
+              },
+              {
+                "name": "GITHUB_CLIENT_ID",
+                "description": "Your GitHub OAuth client ID. You can find this in the GitHub Developer settings.",
+                "link": "/docs/authentication/#GITHUB_CLIENTL"
+              },
+              {
+                "name": "GITHUB_CLIENT_SECRET",
+                "description": "Your GitHub OAuth client secret. You can find this in the GitHub Developer settings.",
+                "link": "/docs/authentication/#GITHUB_CLIENT"
+              },
+              {
+                "name": "MAILJET_API_SECRET",
+                "description": "Your Mailjet API secret key. You can find this in the Mailjet account settings.",
+                "link": "/docs/authentication/#MAILJET_API"
+              },
+              {
+                "name": "MAILJET_API_KEY",
+                "description": "Your Mailjet API key. You can find this in the Mailjet account settings.",
+                "link": "/docs/authentication/#MAILJET_API"
+              }
+            ]
+          },
+          "start": {
+            "title": "Démarrer le développement",
+            "steps": "npm run dev"
+          },
+          "enjoy": {
+            "title": "Bon codage !",
+            "description": "Vous pouvez maintenant profiter de votre application ou consulter la documentation de cette boilerplate."
+          }
+        }
+      },
+      "components": {
+        "layout-components-title": "Composants de mise en page",
+        "layout-components-subtitle": "Blocs de construction de base pour structurer votre application.",
+        "ui-components-title": "Composants UI",
+        "ui-components-subtitle": "Améliorez l'expérience utilisateur avec ces éléments interactifs.",
+        "icon-components-title": "Composants SVG",
+        "icon-components-subtitle": "3 props: className, fill & background. Amusez-vous.",
+        "title": "Composants",
+        "description": "Voici une liste de ces composants passe-partout spéciaux utilisant la traduction dynamique, Résponsive et plus de fonctionnalités",
+        "not-found": "Désolé, le composant demandé n'existe pas.",
+        "go-back": "Retour à l'accueil",
+        "item-title": "Composant {item}",
+        "item-description": "Le composant {item} est utilisé pour la navigation principale dans l'application.",
+        "usage-title": "Utilisation",
+        "usage-description": "Voici comment utiliser le composant {item}.",
+        "props-title": "Props",
+        "variants-title": "Variants",
+        "variants-description": "Le composant {item} supporte plusieurs variantes. Voici les variantes actuelles :",
+        "note": "Les variantes, les styles et les props sont susceptible d'évoluer ou d'étre plus nombreuses à l'avenir.",
+        "default": "Défaut",
+        "exemple-title": "Exemple",
+        "exemple-description": "Voici un rendu du composant Nav :",
+        "carousel-3d": {
+          "props": [
+            {
+              "name": "items",
+              "type": "array",
+              "description": "Liste des éléments à afficher dans le carrousel.",
+              "default": "[]"
+            },
+            {
+              "name": "autoplay",
+              "type": "boolean",
+              "description": "Définit si le carrousel doit défiler automatiquement.",
+              "default": "false"
+            }
+          ]
+        },
+        "nav": {
+          "static": "Mode statique sans traductions :",
+          "dynamic": "Mode dynamique avec traductions :",
+          "props": [
+            {
+              "name": "t",
+              "type": "string",
+              "description": "Clé de traduction",
+              "default": "undefined"
+            },
+            {
+              "name": "render",
+              "type": "string",
+              "description": "Clé pour afficher un tableau ou un objet de liens",
+              "default": "undefined"
+            },
+            {
+              "name": "root",
+              "type": "number[]",
+              "description": "Indices racine (applicable uniquement si d est un tableau)",
+              "default": "[]"
+            },
+            {
+              "name": "links",
+              "type": "string[] | { [key: string]: string }",
+              "description": "Tableau ou objet de liens directs",
+              "default": "[]"
+            },
+            {
+              "name": "path",
+              "type": "string",
+              "description": "Chemin de base pour les liens non-racine",
+              "default": "''"
+            },
+            {
+              "name": "active",
+              "type": "boolean",
+              "description": "Applique des styles actifs en fonction du chemin actuel",
+              "default": "false"
+            },
+            {
+              "name": "navClass",
+              "type": "string",
+              "description": "Classe personnalisée pour le nav",
+              "default": "''"
+            },
+            {
+              "name": "ulClass",
+              "type": "string",
+              "description": "Classe personnalisée pour le ul",
+              "default": "''"
+            },
+            {
+              "name": "liClass",
+              "type": "string",
+              "description": "Classe personnalisée pour le li",
+              "default": "''"
+            },
+            {
+              "name": "variant",
+              "type": "string",
+              "description": "Variante de lien",
+              "default": "'default'",
+              "options": ["default", "primary", "secondary"]
+            },
+            {
+              "name": "anchorLinks",
+              "type": "boolean",
+              "description": "Utilise des liens d'ancrage si vrai",
+              "default": "false"
+            },
+            {
+              "name": "pos",
+              "type": "string",
+              "description": "Position",
+              "default": "'default'",
+              "options": ["default", "fixed"]
+            },
+            {
+              "name": "dir",
+              "type": "string",
+              "description": "Direction de navigation",
+              "default": "'row'",
+              "options": ["row", "col"]
+            },
+            {
+              "name": "setIsOpen",
+              "type": "function",
+              "description": "Fonction pour définir l'état ouvert",
+              "default": "undefined"
+            }
+          ]
+        },
+        "section": {
+          "props": [
+            {
+              "name": "children",
+              "type": "React.ReactNode",
+              "description": "Les éléments enfants du composant",
+              "default": "undefined"
+            },
+            {
+              "name": "className",
+              "type": "string",
+              "description": "Classe CSS personnalisée pour le composant",
+              "default": "undefined"
+            },
+            {
+              "name": "bgImg",
+              "type": "string",
+              "description": "URL de l'image de fond",
+              "default": "undefined"
+            },
+            {
+              "name": "id",
+              "type": "string",
+              "description": "ID unique pour le composant",
+              "default": "undefined"
+            }
+          ]
+        }
+      },
+      "internationalization": {
+        "title": "Internationalisation",
+        "description": "L'internationalisation utilise i18n pour gérer la locale de l'utilisateur et la définit par défaut. Ensuite, Next-Intl est utilisé pour gérer les traductions de l'application.",
+
+        "setup": {
+          "part1": "Si vous avez installé la boilerplate EzStart, tout est déjà pré-installé. Si vous shouaitez utiliser Next-Intl seulement, je vous renvoie vers",
+          "link": "la documentation officielle de next-intl ici.",
+          "part2": "Pour commencer a utiliser Next-Intl, il suffit de se rendre dans le dossier",
+          "part3": "à la racine du projet et de renseigner les fichiers",
+          "and": "et",
+          "or": "ou autre selon la langue que vous souhaitez utiliser.",
+          "part4": "Seules les locales",
+          "arePredefined": "sont prédéfinies.",
+          "newLocale": {
+            "part1": "Pour en ajouter une nouvelle, il faut créer le fichier JSON correspondant dans le dossier",
+            "part2": "par exemple",
+            "and": "puis vous devrez ajouter la nouvelle locale au tableau",
+            "part3": "comme montré ci-dessous."
+          },
+          "i18n": "// src/i18n.ts"
+        },
+        "example-json": {
+          "fr": "// messages/fr.json",
+          "title": "Exemple de contenu JSON",
+          "description": "Voici un exemple de ce à quoi pourrait ressembler un fichier",
+          "welcome-message": "Bienvenue sur notre site!",
+          "exemple-title": "À propos de nous"
+        },
+        "missing-translations": {
+          "title": "Gestion des traductions manquantes",
+          "description": "Pour gérer les traductions manquantes, vous pouvez utiliser un fallback dans votre code. Par exemple :"
+        },
+        "usage": {
+          "title": "Utilisation",
+          "description": "Utilisez le hook `useTranslations` pour accéder aux traductions dans vos composants :",
+          "components": "// Vos composants",
+          "localeSwitcher": "Le changement de locale se fait via le composant `LocaleSwitcher`:"
+        },
+        "resources": {
+          "title": "Ressources supplémentaires",
+          "description": "Pour plus d'informations, consultez les ressources suivantes :",
+          "nextIntl": "Documentation officielle de next-intl",
+          "i18next": "Documentation de i18next"
+        }
+      },
+      "authentication": {
+        "title": "Authentification",
+        "description": "Cette section explique comment configurer les variables d'environnement nécessaires pour l'authentification dans votre application EzStart.",
+        "setup": {
+          "title": "Variables d'environnement pour l'authentification",
+          "authUrl": {
+            "title": "AUTH_URL",
+            "description": "Définissez l'URL de votre application. Par exemple, pour un développement local, utilisez :"
+          },
+          "authSecret": {
+            "title": "AUTH_SECRET",
+            "description": "Utilisez une clé secrète pour votre application d'authentification. Vous pouvez générer cette clé en utilisant des outils comme "
+          },
+          "authSalt": {
+            "title": "AUTH_SALT",
+            "description": "Utilisez un sel pour ajouter une couche de sécurité supplémentaire à vos mots de passe :"
+          },
+          "googleClient": {
+            "title": "GOOGLE_CLIENT_ID et GOOGLE_CLIENT_SECRET",
+            "description": "Pour activer l'authentification via Google, vous aurez besoin d'un identifiant et d'un secret de client Google. Vous pouvez les obtenir à partir de la console des développeurs Google :"
+          },
+          "githubClient": {
+            "title": "GITHUB_CLIENT_ID et GITHUB_CLIENT_SECRET",
+            "description": "Pour activer l'authentification via GitHub, vous aurez besoin d'un identifiant et d'un secret de client GitHub. Vous pouvez les obtenir à partir des paramètres des développeurs GitHub :"
+          },
+          "mailjetApi": {
+            "title": "MAILJET_API_SECRET et MAILJET_API_KEY",
+            "description": "Pour envoyer des emails via Mailjet, vous aurez besoin d'une clé API et d'un secret API Mailjet. Vous pouvez les obtenir à partir de votre compte Mailjet :"
+          }
+        },
+        "resources": {
+          "title": "Ressources supplémentaires",
+          "description": "Pour plus d'informations, consultez les ressources suivantes :",
+          "nextAuth": "Documentation officielle de NextAuth.js",
+          "googleIdentity": "Documentation Google Identity",
+          "githubOAuth": "Documentation GitHub OAuth Apps",
+          "mailjet": "Documentation Mailjet API"
+        }
+      },
+      "db-management": {
+        "title": "Gestion de la Base de Données",
+        "description": "La gestion de la base de données utilise Prisma ORM pour la création et l'exploitation des données.",
+        "introduction": "Si vous avez installé la boilerplate EzStart, tout est déjà pré-installé pour un développement local. Si vous souhaitez utiliser Prisma uniquement, je vous renvoie vers la documentation officielle de Prisma ici.",
+        "first-time-postgresql": "Si c'est la première fois que vous utilisez PostgreSQL, suivez ces étapes",
+        "install-postgresql": {
+          "title": "Installer PostgreSQL",
+          "download": "Téléchargez et installez PostgreSQL à partir du site officiel :",
+          "instructions": "Suivez les instructions d'installation pour votre système d'exploitation."
+        },
+        "initialize-database": {
+          "title": "Initialiser la base de données",
+          "description": "Après l'installation, initialisez une nouvelle base de données. Vous pouvez installer PGadmin pour avoir une interface visuelle de base de données ou utilisez l'outil psql fourni avec PostgreSQL pour créer une base de données et un utilisateur :"
+        },
+        "configure-environment": {
+          "title": "Configurer l'environnement",
+          "description": "Créez un fichier .env à la racine de votre projet avec les variables d'environnement nécessaires :"
+        },
+        "initialize-prisma": {
+          "title": "Initialiser Prisma",
+          "description": "Initialisez Prisma dans votre projet :"
+        },
+        "configure-prisma-schema": {
+          "title": "Configurer le schéma Prisma",
+          "description": "Dans le fichier prisma/schema.prisma, assurez-vous que votre configuration ressemble à ceci :"
+        },
+        "apply-migrations": {
+          "title": "Appliquer les migrations",
+          "description": "Appliquez les migrations pour synchroniser votre base de données avec le schéma Prisma :"
+        },
+        "start-application": {
+          "title": "Démarrer l'application",
+          "description": "Une fois que tout est configuré, vous pouvez démarrer votre application en mode développement :"
+        },
+        "example-table": {
+          "title": "Exemple de table",
+          "description": "Pour ajouter une nouvelle table, éditez le fichier schema.prisma dans le dossier prisma à la racine du projet et ajoutez votre nouvelle table :",
+          "migrate": "N'oubliez pas de migrer votre base de données après avoir modifié le schéma :"
+        },
+        "usage": {
+          "title": "Utilisation",
+          "description": "Utilisez les fonctions Prisma pour accéder aux données dans vos composants :"
+        },
+        "additional-resources": {
+          "title": "Ressources supplémentaires",
+          "description": "Pour plus d'informations, consultez les ressources suivantes :"
+        }
+      },
+      "qr-code-generator": {
+        "title": "Generateur de QR code",
+        "description": "Crée ton qr code gratuitement et facilement."
+      },
+      "image-sorting": {
+        "title": "Tri d'images",
+        "description": "Triez vos images automatiquement pour détecter les doublons, les images floues ou celles de petite taille."
+      },
+      "payment": {
+        "title": "Paiement",
+        "description": "Paiement en ligne avec Stripe à venir."
+      }
+    }
+  }
+}
