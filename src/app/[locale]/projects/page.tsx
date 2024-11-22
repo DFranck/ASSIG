@@ -11,7 +11,8 @@ export const metadata: Metadata = {
 
 const pageProjects = async () => {
   const session = await auth();
-  const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
   const projects: Project[] = await fetch(`${baseUrl}/api/projects`, {
     headers: headers(),
   }).then((res) => res.json());
