@@ -1,14 +1,12 @@
 import Section from '@/components/shared/section';
 import { Input } from '@/components/ui/input';
 import GoogleMapsComponent from '@/features/projects/create/GoogleMap';
+import { ParamsWithId } from '@/types/api';
 import { Metadata } from 'next';
 
-interface Props {
-  params: { id: string };
-}
-
 async function fetchProjectDetails(id: string) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = process.env.AUTH_URL || 'http://localhost:3000';
+  console.log('[FETCH] Fetching project details for ID:', id);
   const response = await fetch(`${baseUrl}/api/projects/${id}`, {
     cache: 'no-store',
   });
@@ -21,23 +19,29 @@ async function fetchProjectDetails(id: string) {
     throw new Error(`Failed to fetch project details: ${response.status}`);
   }
 
-  const data = await response.json();
-  return data;
+  return response.json();
 }
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = await fetchProjectDetails(params.id);
-
-  return {
-    title: project.title || `Projet ${params.id}`,
-    description: project.description || `Détails du projet ${params.id}`,
-  };
-}
-
-const PageProjectsProject = async ({ params }: Props) => {
+export async function generateMetadata({
+  params,
+}: ParamsWithId): Promise<Metadata> {
   try {
     const project = await fetchProjectDetails(params.id);
-    console.log('[PAGE] Project details loaded:', project);
+    return {
+      title: project.title || `Project ${params.id}`,
+      description: project.description || `Details for project ${params.id}`,
+    };
+  } catch (error) {
+    console.error('[Metadata] Error fetching project details:', error);
+    return {
+      title: `Project ${params.id}`,
+      description: 'Project details could not be loaded.',
+    };
+  }
+}
+
+const PageProjectsProject = async ({ params }: ParamsWithId) => {
+  try {
+    const project = await fetchProjectDetails(params.id);
 
     if (!project) {
       return <p>Project not found</p>;

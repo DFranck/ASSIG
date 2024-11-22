@@ -25,7 +25,7 @@ export const FormContainer = () => {
     },
   });
   const onSubmit = async (data: any) => {
-    const response = await fetch('/api/projects/create', {
+    const response = await fetch('/api/projects', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
